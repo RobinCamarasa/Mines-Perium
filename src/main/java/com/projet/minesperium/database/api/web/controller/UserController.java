@@ -64,7 +64,9 @@ public class UserController {
         List<User> users = userDao.findAll();
         for (User user1 : users) {
             if (user1.getPassword().equalsIgnoreCase(password) && user1.getPseudo().equalsIgnoreCase(pseudo)) {
-                return new UserCompleteDto(user1);
+                UserCompleteDto userCompleteDto = new UserCompleteDto(user1);
+                userCompleteDto.setValue(scoreDao.findAll());
+                return userCompleteDto;
             }
         }
         return new UserCompleteDto();

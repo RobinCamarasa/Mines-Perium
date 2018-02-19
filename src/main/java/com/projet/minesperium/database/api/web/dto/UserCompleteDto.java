@@ -59,6 +59,14 @@ public class UserCompleteDto {
         return userCompleteDtos;
     }
 
+    public void setValue(List<Score> scores) {
+        for (Score score : scores) {
+            if(score.getUser().getId().equals(this.getId())) {
+                value += score.getValue();
+            }
+        }
+    }
+
     public static List<UserCompleteDto> getRanking(List<User> users, List<Score> scores, Game game) {
         List<UserCompleteDto> userCompleteDtos = new ArrayList<>();
         for (User user : users) {

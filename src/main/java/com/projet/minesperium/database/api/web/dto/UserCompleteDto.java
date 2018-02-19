@@ -20,6 +20,9 @@ public class UserCompleteDto {
         this.value = 0f;
     }
 
+    public UserCompleteDto() {
+    }
+
     public Long getId() {
         return id;
     }

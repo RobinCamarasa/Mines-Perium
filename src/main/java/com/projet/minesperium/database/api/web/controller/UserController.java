@@ -58,4 +58,15 @@ public class UserController {
         userDao.save(user);
         return new UserDto(user);
     }
+
+    @GetMapping(value = "/identification")
+    public UserCompleteDto identificate(@RequestBody User user) {
+        List<User> users = userDao.findAll();
+        for (User user1 : users) {
+            if (user1.getPassword().equalsIgnoreCase(user.getPassword()) && user1.getPseudo().equalsIgnoreCase(user.getPseudo())) {
+                return new UserCompleteDto(user1);
+            }
+        }
+        return new UserCompleteDto();
+    }
 }

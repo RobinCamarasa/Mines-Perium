@@ -59,11 +59,11 @@ public class UserController {
         return new UserDto(user);
     }
 
-    @GetMapping(value = "/identification")
-    public UserCompleteDto identificate(@RequestBody User user) {
+    @GetMapping(value = "/identification/{pseudo}/{password}")
+    public UserCompleteDto identificate(@PathVariable String pseudo, @PathVariable String password) {
         List<User> users = userDao.findAll();
         for (User user1 : users) {
-            if (user1.getPassword().equalsIgnoreCase(user.getPassword()) && user1.getPseudo().equalsIgnoreCase(user.getPseudo())) {
+            if (user1.getPassword().equalsIgnoreCase(password) && user1.getPseudo().equalsIgnoreCase(pseudo)) {
                 return new UserCompleteDto(user1);
             }
         }

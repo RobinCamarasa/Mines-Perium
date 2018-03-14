@@ -69,7 +69,7 @@ public class UserController {
                 return userCompleteDto;
             }
 
-            if (user1.getPassword().equalsIgnoreCase(password) && user1.getMail().equalsIgnoreCase(pseudo)) {
+            if (user1.getPassword().equalsIgnoreCase(password) && pseudo.equalsIgnoreCase(user1.getMail())) {
                 UserCompleteDto userCompleteDto = new UserCompleteDto(user1);
                 userCompleteDto.setValue(scoreDao.findAll());
                 return userCompleteDto;
@@ -83,11 +83,6 @@ public class UserController {
         List<User> users = userDao.findAll();
         for (User user1 : users) {
             if (user1.getPseudo().equalsIgnoreCase(pseudo)) {
-                UserCompleteDto userCompleteDto = new UserCompleteDto(user1);
-                userCompleteDto.setValue(scoreDao.findAll());
-                return userCompleteDto;
-            }
-            if (user1.getMail().equalsIgnoreCase(pseudo)) {
                 UserCompleteDto userCompleteDto = new UserCompleteDto(user1);
                 userCompleteDto.setValue(scoreDao.findAll());
                 return userCompleteDto;

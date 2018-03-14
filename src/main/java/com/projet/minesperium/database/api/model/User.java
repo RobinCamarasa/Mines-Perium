@@ -27,13 +27,17 @@ public class User {
     @Column
     private Boolean activated;
 
-    public User(String pseudo, String password, String phonenumber, String civilisation, Integer rights, Boolean activated) {
+    @Column
+    private String mail;
+
+    public User(String pseudo, String password, String phonenumber, String civilisation, Integer rights, Boolean activated, String mail) {
         this.pseudo = pseudo;
         this.password = password;
         this.phonenumber = phonenumber;
         this.civilisation = civilisation;
         this.rights = rights;
         this.activated = activated;
+        this.mail = mail;
     }
 
     public User() {
@@ -93,5 +97,13 @@ public class User {
 
     public void setActivated(Boolean activated) {
         this.activated = activated;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 }

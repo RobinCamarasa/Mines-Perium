@@ -12,12 +12,14 @@ public class UserCompleteDto {
     private String pseudo;
     private String civilisation;
     private Float value;
+    private String mail;
 
     public UserCompleteDto(User user) {
         this.id = user.getId();
         this.pseudo = user.getPseudo();
         this.civilisation = user.getCivilisation();
         this.value = 0f;
+        this.mail = user.getMail();
     }
 
     public UserCompleteDto() {
@@ -37,6 +39,10 @@ public class UserCompleteDto {
 
     public Float getValue() {
         return value;
+    }
+
+    public String getMail() {
+        return mail;
     }
 
     public void setValue(Float value) {

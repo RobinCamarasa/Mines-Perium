@@ -6,6 +6,9 @@ public class GameDto {
     private Long id;
     private String name;
 
+    public GameDto() {
+    }
+
     public GameDto(Game game) {
         this.id = game.getId();
         this.name = game.getName();

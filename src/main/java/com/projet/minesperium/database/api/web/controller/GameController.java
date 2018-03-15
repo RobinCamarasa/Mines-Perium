@@ -34,4 +34,16 @@ public class GameController {
         return (new GameDto(game));
     }
 
+    @GetMapping (value = "/check/{game}")
+    public GameDto addGame(@PathVariable String game) {
+        List<Game> games = gameDao.findAll();
+        for (Game game1 : games) {
+            if(game1.getName().equalsIgnoreCase(game)) {
+                return new GameDto(game1);
+            }
+        }
+        return new GameDto();
+    }
+
+
 }

@@ -9,6 +9,9 @@ public class ScoreDto {
     private String name_game;
     private Float value;
 
+    public ScoreDto() {
+    }
+
     public ScoreDto(Score score) {
         this.id_user = score.getUser().getId();
         this.pseudo_user = score.getUser().getPseudo();

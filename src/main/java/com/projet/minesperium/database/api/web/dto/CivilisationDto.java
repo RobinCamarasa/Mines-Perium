@@ -29,7 +29,7 @@ public class CivilisationDto {
     }
 
     public static List<CivilisationDto> getRanking(List<Score> scores) {
-        scores = Util.getHighScore(scores);
+//        scores = Util.getHighScore(scores);
         List<CivilisationDto> civilisationDtos = new ArrayList<>();
         civilisationDtos.add(new CivilisationDto("Egyptienne"));
         civilisationDtos.add(new CivilisationDto("Gauloise"));
@@ -47,7 +47,7 @@ public class CivilisationDto {
     }
 
     public static List<CivilisationDto> getRanking(List<Score> scores, Game game) {
-        scores = Util.getHighScore(scores);
+//        scores = Util.getHighScore(scores);
         List<CivilisationDto> civilisationDtos = new ArrayList<>();
         civilisationDtos.add(new CivilisationDto("Egyptienne"));
         civilisationDtos.add(new CivilisationDto("Gauloise"));

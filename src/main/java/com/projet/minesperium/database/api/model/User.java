@@ -106,4 +106,11 @@ public class User {
     public void setMail(String mail) {
         this.mail = mail;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "pseudo='" + pseudo + '\'' +
+                '}';
+    }
 }

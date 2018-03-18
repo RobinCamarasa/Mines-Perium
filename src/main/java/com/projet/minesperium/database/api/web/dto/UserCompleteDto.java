@@ -3,6 +3,7 @@ package com.projet.minesperium.database.api.web.dto;
 import com.projet.minesperium.database.api.model.Game;
 import com.projet.minesperium.database.api.model.Score;
 import com.projet.minesperium.database.api.model.User;
+import com.projet.minesperium.database.api.model.Util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +52,7 @@ public class UserCompleteDto {
 
     public static List<UserCompleteDto> getRanking(List<User> users, List<Score> scores) {
         List<UserCompleteDto> userCompleteDtos = new ArrayList<>();
+        scores = Util.getHighScore(scores);
         for (User user : users) {
             UserCompleteDto userCompleteDto = new UserCompleteDto(user);
 
@@ -75,6 +77,7 @@ public class UserCompleteDto {
 
     public static List<UserCompleteDto> getRanking(List<User> users, List<Score> scores, Game game) {
         List<UserCompleteDto> userCompleteDtos = new ArrayList<>();
+        scores = Util.getHighScore(scores);
         for (User user : users) {
             UserCompleteDto userCompleteDto = new UserCompleteDto(user);
             for (Score score : scores) {

@@ -2,6 +2,7 @@ package com.projet.minesperium.database.api.web.dto;
 
 import com.projet.minesperium.database.api.model.Game;
 import com.projet.minesperium.database.api.model.Score;
+import com.projet.minesperium.database.api.model.Util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,7 @@ public class CivilisationDto {
     }
 
     public static List<CivilisationDto> getRanking(List<Score> scores) {
+        scores = Util.getHighScore(scores);
         List<CivilisationDto> civilisationDtos = new ArrayList<>();
         civilisationDtos.add(new CivilisationDto("Egyptienne"));
         civilisationDtos.add(new CivilisationDto("Gauloise"));
@@ -45,6 +47,7 @@ public class CivilisationDto {
     }
 
     public static List<CivilisationDto> getRanking(List<Score> scores, Game game) {
+        scores = Util.getHighScore(scores);
         List<CivilisationDto> civilisationDtos = new ArrayList<>();
         civilisationDtos.add(new CivilisationDto("Egyptienne"));
         civilisationDtos.add(new CivilisationDto("Gauloise"));

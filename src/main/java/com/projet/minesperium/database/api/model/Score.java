@@ -57,4 +57,13 @@ public class Score {
     public void setGame(Game game) {
         this.game = game;
     }
+
+    @Override
+    public String toString() {
+        return "Score{" +
+                "value=" + value +
+                ", user=" + user +
+                ", game=" + game +
+                '}';
+    }
 }

@@ -52,15 +52,18 @@ public class UserCompleteDto {
 
     public static List<UserCompleteDto> getRanking(List<User> users, List<Score> scores) {
         List<UserCompleteDto> userCompleteDtos = new ArrayList<>();
-//        scores = Util.getHighScore(scores);
         for (User user : users) {
             UserCompleteDto userCompleteDto = new UserCompleteDto(user);
-
+            Float Tower_High_Score = 0f;
             for (Score score : scores) {
                 if(user.getId().equals(score.getUser().getId()) && score.getGame().getId() != 171l) {
                     userCompleteDto.setValue(userCompleteDto.getValue() + score.getValue());
                 }
+                if (user.getId().equals(score.getUser().getId()) && score.getGame().getId() == 171l && score.getValue() > Tower_High_Score) {
+                    Tower_High_Score = score.getValue();
+                }
             }
+            userCompleteDto.setValue(userCompleteDto.getValue() + Tower_High_Score);
             userCompleteDtos.add(userCompleteDto);
         }
         sort(userCompleteDtos);
@@ -77,12 +80,11 @@ public class UserCompleteDto {
 
     public static List<UserCompleteDto> getRanking(List<User> users, List<Score> scores, Game game) {
         List<UserCompleteDto> userCompleteDtos = new ArrayList<>();
-//        scores = Util.getHighScore(scores);
         for (User user : users) {
             UserCompleteDto userCompleteDto = new UserCompleteDto(user);
             for (Score score : scores) {
-                if(user.getId().equals(score.getUser().getId()) && score.getGame().getId().equals(game.getId()) && score.getGame().getId() != 171l) {
-                    userCompleteDto.setValue(userCompleteDto.getValue() + score.getValue());
+                if(user.getId().equals(score.getUser().getId()) && score.getGame().getId().equals(game.getId()) && score.getValue() > userCompleteDto.getValue()) {
+                    userCompleteDto.setValue(score.getValue());
                 }
             }
             userCompleteDtos.add(userCompleteDto);

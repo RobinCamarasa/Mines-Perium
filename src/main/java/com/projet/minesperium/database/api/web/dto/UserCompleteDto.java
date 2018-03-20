@@ -82,11 +82,16 @@ public class UserCompleteDto {
         List<UserCompleteDto> userCompleteDtos = new ArrayList<>();
         for (User user : users) {
             UserCompleteDto userCompleteDto = new UserCompleteDto(user);
+            Float Tower_High_Score = 0f;
             for (Score score : scores) {
-                if(user.getId().equals(score.getUser().getId()) && score.getGame().getId().equals(game.getId()) && score.getValue() > userCompleteDto.getValue()) {
-                    userCompleteDto.setValue(score.getValue());
+                if(user.getId().equals(score.getUser().getId()) && score.getGame().getId() != 171l && score.getGame().getId().equals(game.getId())) {
+                    userCompleteDto.setValue(userCompleteDto.getValue() + score.getValue());
+                }
+                if (user.getId().equals(score.getUser().getId()) && score.getGame().getId() == 171l && score.getValue() > Tower_High_Score  && score.getGame().getId().equals(game.getId())) {
+                    Tower_High_Score = score.getValue();
                 }
             }
+            userCompleteDto.setValue(userCompleteDto.getValue() + Tower_High_Score);
             userCompleteDtos.add(userCompleteDto);
         }
         sort(userCompleteDtos);

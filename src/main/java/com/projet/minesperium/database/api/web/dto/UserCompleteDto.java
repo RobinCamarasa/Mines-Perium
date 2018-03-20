@@ -57,7 +57,7 @@ public class UserCompleteDto {
             UserCompleteDto userCompleteDto = new UserCompleteDto(user);
 
             for (Score score : scores) {
-                if(user.getId().equals(score.getUser().getId()) && score.getGame().getId() != 171l) {
+                if(user.getId().equals(score.getUser().getId())) {
                     userCompleteDto.setValue(userCompleteDto.getValue() + score.getValue());
                 }
             }
@@ -81,7 +81,7 @@ public class UserCompleteDto {
         for (User user : users) {
             UserCompleteDto userCompleteDto = new UserCompleteDto(user);
             for (Score score : scores) {
-                if(user.getId().equals(score.getUser().getId()) && score.getGame().getId().equals(game.getId()) && score.getGame().getId() != 171l) {
+                if(user.getId().equals(score.getUser().getId()) && score.getGame().getId().equals(game.getId())) {
                     userCompleteDto.setValue(userCompleteDto.getValue() + score.getValue());
                 }
             }

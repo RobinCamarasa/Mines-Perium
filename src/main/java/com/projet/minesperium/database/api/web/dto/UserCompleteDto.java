@@ -56,12 +56,12 @@ public class UserCompleteDto {
             UserCompleteDto userCompleteDto = new UserCompleteDto(user);
             Float Tower_High_Score = 0f;
             for (Score score : scores) {
-                if(user.getId().equals(score.getUser().getId()) && !score.getGame().getId().equals(new Long(171l))) {
+                if(user.getId().equals(score.getUser().getId()) && score.getGame().getId() != 171l) {
                     userCompleteDto.setValue(userCompleteDto.getValue() + score.getValue());
                 }
-//                if (user.getId().equals(score.getUser().getId()) && score.getGame().getId() == 171l && score.getValue() > Tower_High_Score) {
-//                    Tower_High_Score = score.getValue();
-//                }
+                if (user.getId().equals(score.getUser().getId()) && score.getGame().getId() == 171l && score.getValue() > Tower_High_Score) {
+                    Tower_High_Score = score.getValue();
+                }
             }
             userCompleteDto.setValue(userCompleteDto.getValue() + Tower_High_Score);
             userCompleteDtos.add(userCompleteDto);

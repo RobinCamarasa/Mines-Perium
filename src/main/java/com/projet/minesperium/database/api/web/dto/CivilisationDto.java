@@ -2,6 +2,7 @@ package com.projet.minesperium.database.api.web.dto;
 
 import com.projet.minesperium.database.api.model.Game;
 import com.projet.minesperium.database.api.model.Score;
+import com.projet.minesperium.database.api.model.User;
 import com.projet.minesperium.database.api.model.Util;
 
 import java.util.ArrayList;
@@ -28,17 +29,17 @@ public class CivilisationDto {
         this.score += score;
     }
 
-    public static List<CivilisationDto> getRanking(List<Score> scores) {
-//        scores = Util.getHighScore(scores);
+    public static List<CivilisationDto> getRanking(List<Score> scores, List<User> users) {
+        List<UserCompleteDto> userCompleteDtos = UserCompleteDto.getRanking(users, scores);
         List<CivilisationDto> civilisationDtos = new ArrayList<>();
         civilisationDtos.add(new CivilisationDto("Egyptienne"));
         civilisationDtos.add(new CivilisationDto("Gauloise"));
         civilisationDtos.add(new CivilisationDto("Romaine"));
         civilisationDtos.add(new CivilisationDto("Viking"));
-        for (Score score : scores) {
-            for (int i = 0 ; i < 4 ; i++) {
-                if (score.getUser().getCivilisation().equalsIgnoreCase(civilisationDtos.get(i).getName())) {
-                    civilisationDtos.get(i).addScore(score.getValue());
+        for (UserCompleteDto userCompleteDto : userCompleteDtos) {
+            for (int i = 0; i < 4; i++) {
+                if (civilisationDtos.get(i).getName().equalsIgnoreCase(userCompleteDto.getCivilisation())) {
+                    civilisationDtos.get(i).addScore(userCompleteDto.getValue());
                 }
             }
         }
@@ -46,17 +47,17 @@ public class CivilisationDto {
         return civilisationDtos;
     }
 
-    public static List<CivilisationDto> getRanking(List<Score> scores, Game game) {
-//        scores = Util.getHighScore(scores);
+    public static List<CivilisationDto> getRanking(List<Score> scores, List<User> users, Game game) {
+        List<UserCompleteDto> userCompleteDtos = UserCompleteDto.getRanking(users, scores, game);
         List<CivilisationDto> civilisationDtos = new ArrayList<>();
         civilisationDtos.add(new CivilisationDto("Egyptienne"));
         civilisationDtos.add(new CivilisationDto("Gauloise"));
         civilisationDtos.add(new CivilisationDto("Romaine"));
         civilisationDtos.add(new CivilisationDto("Viking"));
-        for (Score score : scores) {
-            for (int i = 0 ; i < 4 ; i++) {
-                if (score.getUser().getCivilisation().equalsIgnoreCase(civilisationDtos.get(i).getName()) && game.getId().equals(score.getGame().getId())) {
-                    civilisationDtos.get(i).addScore(score.getValue());
+        for (UserCompleteDto userCompleteDto : userCompleteDtos) {
+            for (int i = 0; i < 4; i++) {
+                if (civilisationDtos.get(i).getName().equalsIgnoreCase(userCompleteDto.getCivilisation())) {
+                    civilisationDtos.get(i).addScore(userCompleteDto.getValue());
                 }
             }
         }

@@ -45,12 +45,12 @@ public class UserController {
 
     @GetMapping (value = "/civilisationranking")
     public List<CivilisationDto> civilisationRanking() {
-        return CivilisationDto.getRanking(scoreDao.findAll());
+        return CivilisationDto.getRanking(scoreDao.findAll(), userDao.findAll());
     }
 
     @GetMapping (value = "/civilisationranking/game/{id}")
     public List<CivilisationDto> civilisationRanking(@PathVariable Long id) {
-        return CivilisationDto.getRanking(scoreDao.findAll(), gameDao.findOne(id));
+        return CivilisationDto.getRanking(scoreDao.findAll(), userDao.findAll(), gameDao.findOne(id));
     }
 
     @PostMapping(value = "/new")
